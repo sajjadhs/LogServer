@@ -4,7 +4,7 @@ This will save and let you search among any logs of your applications which are 
 
 The Only to do is to set the http enricher of the serilog to the hosted URL of this repository on your owns.
 
-To View and exlpore the logs you can call you-server-adders/logs
+To View and exlpore the logs you can call you-server-address/logs
 
 ![alt text](https://github.com/sajjadhs/LogServer/blob/master/logger.png)
 
