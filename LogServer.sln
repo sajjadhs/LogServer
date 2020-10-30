@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogServer", "LogServer\LogServer.csproj", "{12229B7C-359C-4138-B3E3-DF90857A62FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12229B7C-359C-4138-B3E3-DF90857A62FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12229B7C-359C-4138-B3E3-DF90857A62FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12229B7C-359C-4138-B3E3-DF90857A62FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12229B7C-359C-4138-B3E3-DF90857A62FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8B48A61-C6E3-4B34-B3DF-EA07A76B526D}
+	EndGlobalSection
+EndGlobal
