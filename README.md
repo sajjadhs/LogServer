@@ -6,8 +6,11 @@ The Only to do is to set the http enricher of the serilog to the hosted URL of t
 
 To View and exlpore the logs you can call you-server-adders/logs
 
+![alt text](https://github.com/sajjadhs/LogServer/blob/master/logger.png)
+
+
 # Contirbute
 ---
 Appreciate any contributors to make this better :D
 
-![alt text](https://github.com/sajjadhs/LogServer/blob/master/logger.png)
+
