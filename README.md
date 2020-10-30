@@ -7,4 +7,4 @@ The Only to do is set http sink of the serilog to the hosted url of this server.
 To View and exlpore the logs you can can serveradders/logs
 
 
-![alt text](https://github.com/sajjadhs/LogServer/blob/image.jpg?raw=true)
+![alt text](https://github.com/sajjadhs/LogServer/blob/master/logger.png)
