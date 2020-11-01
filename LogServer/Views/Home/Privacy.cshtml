@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Data>
 @using Newtonsoft.Json
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Log View";
 }
 @section Scripts{
 
@@ -15,15 +15,18 @@
                     qq.events.forEach(function (val, ind) {
                         dta.push(val);
                     });
+
                 });
+                $("#total").text(dta.length);
                 $('#element').jsonViewer(dta);
             });
             var logLevel;
-            var MachineName="";
+            var MachineName = "";
             var Message = "";
             var Timestamp = "";
+            var AssemblyName = "";
             $("#loglevel").on("change", function () {
-                
+
                 var val = $(this).val();
                 logLevel = val;
                 DoSearch();
@@ -47,9 +50,12 @@
                 Timestamp = val;
                 DoSearch();
             });
+            $("#as").on("input", function () {
 
-
-
+                var val = $("#as").val();
+                AssemblyName = val;
+                DoSearch();
+            });
             function DoSearch() {
                 var vv = dta;
                 if (logLevel !== undefined && logLevel !== "") {
@@ -57,67 +63,75 @@
                     vv = vv.filter(q => q.Level == logLevel);
                 }
                 if (MachineName !== null && MachineName !== "") {
-                    console.log("mname "+MachineName);
+                    console.log("mname " + MachineName);
                     vv = vv.filter(q => q.Properties.MachineName.toLowerCase().indexOf(MachineName.toLowerCase()) >= 0);
                 }
                 if (Message !== null && Message !== "") {
                     console.log("msg " + Message);
-                    vv = vv.filter(q => q.RenderedMessage.toLowerCase().indexOf(Message.toLowerCase())>=0);
+                    vv = vv.filter(q => q.RenderedMessage.toLowerCase().indexOf(Message.toLowerCase()) >= 0);
+                }
+                if (AssemblyName !== null && AssemblyName !== "") {
+                    console.log("asmly name  " + AssemblyName);
+                    vv = vv.filter(q => q.Properties.AssemblyName.toLowerCase().indexOf(AssemblyName.toLowerCase()) >= 0);
                 }
                 if (Timestamp !== null && Timestamp !== "") {
                     console.log("ts " + Timestamp);
                     vv = vv.filter(q => q.Timestamp.toLowerCase().indexOf(Timestamp.toLowerCase()) >= 0);
                 }
                 //Timestamp
-                console.log(vv);
+                $("#ftotal").text(vv.length);
                 $('#element').jsonViewer(vv);
             }
         });
-
-
-
-
-
-
     </script>
-
-
 }
 <h1>My Logs</h1>
-
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                Filtering
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    Log Level =
+                    <select id="loglevel">
+                        <option value="Information">Information</option>
+                        <option value="Error">Error</option>
+                        <option value="Warning">Warning</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    MachineName =
+                    <input id="mn" type="text" placeholder="type machine name" />
+                </div>
+                <div class="form-group">
+                    Message(contains) =
+                    <input id="msg" type="text" placeholder="type statement" />
+                </div>
+                <div class="form-group">
+                    Assembly Name(contains) =
+                    <input id="an" type="text" placeholder="type assembly name" />
+                </div>
+                <div class="form-group">
+                    TimeStamp(contains) =
+                    <input id="ts" type="text" placeholder="type timestamp" />
+                </div>
 
-        <div class="form-group">
-            Log Level =
-            <select id="loglevel">
-                <option value="Information">Information</option>
-                <option value="Error">Error</option>
-                <option value="Warning">Warning</option>
-            </select>
+            </div>
         </div>
-        <div class="form-group">
-            MachineName =
-            <input id="mn" type="text" placeholder="type machine name" />
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header">
+                Statistics:
+            </div>
+            <div class="card-body">
+                <label>Total Logs:</label><label id="total"></label>
+                <br />
+                <label>Filtered Logs:</label><label id="ftotal"></label>
+            </div>
         </div>
-        <div class="form-group">
-            Message(contains) =
-            <input id="msg" type="text" placeholder="type statement" />
-        </div>
-        <div class="form-group">
-            TimeStamp(contains) =
-            <input id="ts" type="text" placeholder="type timestamp" />
-        </div>
-
     </div>
 </div>
-
 <div id="element"></div>
-
-@*@foreach (var item in Model)
-    {
-        <div
-        @Html.Raw(JsonConvert.SerializeObject(item, Formatting.Indented))
-
-        <hr />
-    }*@
